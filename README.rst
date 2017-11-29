@@ -3,6 +3,9 @@ equality
 
 Utilities to aid in testing for equality.
 
+.. image:: https://travis-ci.org/tartley/equality.svg?branch=master
+    :target: https://travis-ci.org/tartley/equality
+
 This package is pre-alpha. The API may change.
 
 When comparing structures like this dict::
