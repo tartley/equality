@@ -4,7 +4,7 @@ equality v{version}
 Utilities to aid in testing for equality.
 '''
 
-__version__ = '0.0.6'
+__version__ = '0.0.7'
 
 __doc__ = __doc__.format(version=__version__)
 

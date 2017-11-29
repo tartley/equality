@@ -49,7 +49,7 @@ def find_value(source, identifier):
     return match.group(1)
 
 def get_sdist_config():
-    description, long_description = read_description('README')
+    description, long_description = read_description('README.rst')
 
     return dict(
         name=NAME,
