@@ -1,10 +1,10 @@
 equality
 ========
 
-Utilities to aid in testing for equality.
-
 .. image:: https://travis-ci.org/tartley/equality.svg?branch=master
     :target: https://travis-ci.org/tartley/equality
+
+Utilities to aid in testing for equality.
 
 This package is pre-alpha. The API may change.
 
@@ -62,7 +62,7 @@ Contact
 :For users: Downloads & documentation:
     http://pypi.python.org/pypi/equality/
 
-:For developers: Souce code & issues:
+:For contributors: Souce code & issues:
     https://github.com/tartley/equality/
 
 :Contact the author:
