@@ -1,10 +1,9 @@
 equality
 ========
 
-.. image:: https://travis-ci.org/tartley/equality.svg?branch=master
-    :target: https://travis-ci.org/tartley/equality
-
 Utilities to aid in testing for equality.
+
+|Travis Test Status|
 
 This package is pre-alpha. The API may change.
 
@@ -67,4 +66,8 @@ Contact
 
 :Contact the author:
     Jonathan Hartley, email: tartley at domain tartley.com, Twitter: @tartley.
+
+
+.. |Travis Test Status| image:: https://travis-ci.org/tartley/equality.svg?branch=master
+    :target: https://travis-ci.org/tartley/equality
 

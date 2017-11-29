@@ -26,7 +26,7 @@ def read_description(filename):
     with open(filename) as fp:
         text = fp.read()
     paras = text.split('\n\n')
-    return paras[2], '\n\n'.join(paras[3:])
+    return paras[1], '\n\n'.join(paras[2:])
 
 def read_file(filename):
     with open(filename, "rt") as filehandle:
