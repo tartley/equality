@@ -58,13 +58,13 @@ approximate comparison of string timestamps.
 Contact
 -------
 
-:For users: Downloads & documentation:
-    http://pypi.python.org/pypi/equality/
+:Users:
+    Downloads & documentation: http://pypi.python.org/pypi/equality/
 
-:For contributors: Souce code & issues:
-    https://github.com/tartley/equality/
+:Contributors:
+    Souce & issues: https://github.com/tartley/equality/
 
-:Contact the author:
+:The author:
     Jonathan Hartley, email: tartley at domain tartley.com, Twitter: @tartley.
 
 
