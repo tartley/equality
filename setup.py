@@ -21,12 +21,12 @@ INSTALL_REQUIRES = [
 
 def read_description(filename):
     '''
-    Read given textfile and return (2nd_para, 3rd_para to end)
+    Read given textfile and return (3rd_para, 4th to final paras)
     '''
     with open(filename) as fp:
         text = fp.read()
     paras = text.split('\n\n')
-    return paras[1], '\n\n'.join(paras[2:])
+    return paras[2], '\n\n'.join(paras[3:])
 
 def read_file(filename):
     with open(filename, "rt") as filehandle:
