@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Publishes current version to PyPI.
+# You'll need to update eqality.__version__ first.
+
+python setup.py sdist
+python3 setup.py bdist_wheel --universal
+twine upload dist/* --skip-existing
+
