@@ -19,18 +19,17 @@ NAME = 'equality'
 INSTALL_REQUIRES = [
 ]
 
-def read_description(filename):
-    '''
-    Read given textfile and return (3rd_para, 4th to final paras)
-    '''
-    with open(filename) as fp:
-        text = fp.read()
-    paras = text.split('\n\n')
-    return paras[1], '\n\n'.join(paras[2:])
-
 def read_file(filename):
     with open(filename, "rt") as filehandle:
         return filehandle.read()
+
+def read_description(filename):
+    '''
+    Read given textfile and return (2nd_para, 3rd_to_final_paras)
+    '''
+    text = read_file(filename)
+    paras = text.split('\n\n')
+    return paras[1], '\n\n'.join(paras[2:])
 
 def find_value(source, identifier):
     '''
@@ -48,12 +47,18 @@ def find_value(source, identifier):
         )
     return match.group(1)
 
+def read_version():
+    '''
+    Return the value of the string '__version__' attribute
+    in our top level __init__.py file.
+    '''
+    return find_value(read_file(join(NAME, '__init__.py')), '__version__')
+
 def get_sdist_config():
     description, long_description = read_description('README.rst')
-
     return dict(
         name=NAME,
-        version=find_value(read_file(join(NAME, '__init__.py')), '__version__'),
+        version=read_version(),
         description=description,
         long_description=long_description,
         url='http://pypi.python.org/pypi/%s/' % (NAME,),
