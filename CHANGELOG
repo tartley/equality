@@ -1,0 +1,14 @@
+0.1.1   Fixes glaring timezone bug.
+        Fix faulty tests that handled timezones the wrong way around.
+        Delete a whole bunch of my own buggy code,
+        replaced with two lines of calls to library 'pendulum'.
+
+0.1.0   Ostensibly now takes account of timezones,
+        but actually has a huge bug wherein it does it all wrong.
+
+0.0.39  Works but totally ignores timezones, assumes all timestamps
+        are tz naive.
+
+Before that, unstable experimental releases, mostly testing my 'release
+to PyPI' script.
+
