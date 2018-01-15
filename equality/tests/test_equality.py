@@ -1,7 +1,10 @@
 """
 Unit tests for equality.
 """
-from datetime import datetime
+from datetime import datetime, timedelta, tzinfo
+
+import pendulum
+import pytest
 
 from ..equality import AnyInt, AnyTimestamp
 
@@ -27,11 +30,27 @@ def test_any_int_repr():
     assert repr(AnyInt()) == '<AnyInt>'
 
 
-T0 = datetime(2017, 12, 31, 23, 59, 0)
+T0 = datetime(2017, 12, 31, 17, 59, 0)
 MINUS_6 = "2017-12-31T23:58:54-06:00"
 MINUS_5 = "2017-12-31T23:58:55-06:00"
+T0_STR  = "2017-12-31T23:59:00-06:00"
 PLUS_5  = "2017-12-31T23:59:05-06:00"
 PLUS_6  = "2017-12-31T23:59:06-06:00"
+
+ZERO = timedelta(0)
+
+class UTC(tzinfo):
+    def utcoffset(self, dt):
+        return ZERO
+    def tzname(self, dt):
+        return "UTC"
+    def dst(self, dt):
+        return ZERO
+
+def test_any_timestamp_constructor_refuses_timezone():
+    with pytest.raises(AssertionError) as exc_info:
+        AnyTimestamp(datetime.now(UTC()))
+    assert str(exc_info.value) == "Constructor doesn't support timezones"
 
 def test_any_timestamp_eq():
     assert AnyTimestamp(T0, seconds=5) != MINUS_6
@@ -46,6 +65,15 @@ def test_any_timestamp_ne():
     assert not (AnyTimestamp(T0, seconds=5) == PLUS_6)
 
 def test_any_timestamp_repr():
-    assert repr(AnyTimestamp(T0, seconds=123)) == \
-        u'<AnyTimestamp 2017-12-31T23:59:00 +/- 123 secs>', 'x'
+    stamp = pendulum.create(2017, 12, 31, 23, 59, 58, tz=-4)
+    assert repr(AnyTimestamp(stamp, seconds=123)) == \
+        u'<AnyTimestamp 2017-12-31T23:59:58-04:00 +/- 123 secs>', 'x'
+
+def test_parse_timestamp():
+    stamp = AnyTimestamp(T0)
+    assert stamp.parse_timestamp(PLUS_5) == datetime(2017, 12, 31, 23, 59, 5)
+
+def test_parse_tz_offset():
+    stamp = AnyTimestamp(T0)
+    assert stamp.parse_tz_offset(PLUS_5) == -6
 
