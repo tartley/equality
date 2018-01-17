@@ -1,7 +1,8 @@
 language: python
 python:
+# This list is duplicated in tox.ini
 - "2.7"
 - "3.6"
-script: pytest
-install: pip install -Ur requirements/dev
+install: pip install tox
+script: tox -e $(echo py$TRAVIS_PYTHON_VERSION | tr -d . )
 
