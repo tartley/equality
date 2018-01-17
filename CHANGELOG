@@ -9,6 +9,8 @@
 0.0.39  Works but totally ignores timezones, assumes all timestamps
         are tz naive.
 
-Before that, unstable experimental releases, mostly testing my 'release
-to PyPI' script.
+...
+
+0.0.1   Unstable experimental releases, mostly testing my 'release
+        to PyPI' script.
 
